@@ -1,0 +1,35 @@
+// [문제 링크]: https://www.acmicpc.net/problem/10811
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+​
+using namespace std;
+​
+int main()
+{
+    int Basket;
+    int Count;
+    int x;
+    int y;
+    cin >> Basket >> Count;
+​
+    vector<int> Pocket(Basket);
+    for (int i = 0; i < Basket; i++)
+    {
+        Pocket[i] = i + 1;
+    }
+​
+    for (int i = 0; i < Count; i++)
+    {
+        cin >> x >> y;
+        reverse(Pocket.begin() + x - 1, Pocket.begin() + y);
+    }
+​
+    for (int i = 0; i < Pocket.size(); i++)
+    {
+        cout << Pocket[i] << ' ';
+    }
+​
+    return 0;
+}
