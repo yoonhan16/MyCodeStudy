@@ -1,0 +1,43 @@
+// [문제 링크]: https://www.acmicpc.net/problem/1546
+
+#include <iostream>
+#include <vector>
+​
+using namespace std;
+​
+int main()
+{
+    float Number;
+    float Maximum = 0;
+    int Count;
+​
+    cin >> Count;
+    float Sum = 0;
+    float Average;
+    vector<float>Score(Count);
+​
+    for (int i = 0; i < Count; i++)
+    {
+        cin >> Number;
+​
+        Score[i] = Number;
+​
+        if (Number >= Maximum)
+        {
+            Maximum = Number;
+        }
+    }
+​
+    for (int i = 0; i < Count; i++)
+    {
+        Sum += Score[i] / Maximum * 100;
+    }
+​
+    Average = Sum / Count;
+​
+    cout << fixed;
+    cout.precision(6);
+    cout << Average << '\n';
+​
+    return 0;
+}
