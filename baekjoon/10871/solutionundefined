@@ -1,0 +1,28 @@
+// [문제 링크]: https://www.acmicpc.net/problem/10871
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    int Count;
+    int less;
+    cin >> Count;
+    cin >> less;
+    int* Numbers = new int[Count];
+​
+    for (int i = 0; i < Count; i++)
+    {
+        cin >> Numbers[i];
+    }
+​
+    for (int i = 0; i < Count; i++)
+    {
+        if (Numbers[i] < less)
+        {
+            cout << Numbers[i] << ' ';
+        }
+    }
+    return 0;
+}
