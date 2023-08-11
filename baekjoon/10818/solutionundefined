@@ -1,0 +1,30 @@
+// [문제 링크]: https://www.acmicpc.net/problem/10818
+
+#include <iostream>
+#include <algorithm>
+​
+using namespace std;
+​
+int main()
+{
+    int Count;
+    cin >> Count;
+​
+    int* Numbers = new int[Count];
+​
+    for (int i = 0; i < Count; i++)
+    {
+        int x;
+        cin >> x;
+        Numbers[i] = x;
+    }
+​
+    sort(Numbers, Numbers + Count);
+​
+    cout << Numbers[0] << ' ' << Numbers[Count - 1];
+​
+    delete[] Numbers;
+​
+    return 0;
+}
+​
