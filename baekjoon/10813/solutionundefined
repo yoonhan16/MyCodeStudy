@@ -1,0 +1,45 @@
+// [문제 링크]: https://www.acmicpc.net/problem/10813
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    int Basket;
+    int Count;
+    int array[101] = { 0, };
+    int A;
+    int B;
+    int C;
+​
+    cin >> Basket
+        >> Count;
+​
+    for (int i = 1; i <= Basket; i++)
+    {
+        array[i] = i;
+​
+    }
+​
+    for (int j = 0; j < Count; j++)
+    {
+        cin >> A
+            >> B;
+​
+        C = array[A];
+        array[A] = array[B];
+        array[B] = C;
+​
+    }
+​
+​
+    for (int i = 1; i <= Basket; i++)
+    {
+        cout << array[i] << ' ';
+    }
+​
+​
+​
+    return 0;
+}
