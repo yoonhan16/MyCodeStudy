@@ -1,0 +1,40 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2525
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    int H = 0;
+    int M = 0;
+    int NewH = 0;
+    int NewM = 0;
+    
+    int Time = 0;
+​
+    cin >> H
+        >> M;
+​
+    cin >> Time;
+​
+    NewH = Time / 60;
+    NewM = Time % 60;
+    H += NewH;
+    M += NewM;
+​
+    if (M >= 60)
+    {
+        H += 1;
+        M -= 60;
+    }
+​
+    if (H >= 24)
+    {
+        H -= 24;
+    }
+​
+    cout << H << ' ' << M << endl;
+​
+    return 0;
+}
