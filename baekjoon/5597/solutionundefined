@@ -1,0 +1,27 @@
+// [문제 링크]: https://www.acmicpc.net/problem/5597
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    int array[31] = { 0, };
+    int StudentNum;
+​
+    for (int i = 1; i <= 28; i++)
+    {
+        cin >> StudentNum;
+        array[StudentNum] = 1;
+    }
+​
+    for (int i = 1; i <= 30; i++)
+    {
+        if (array[i] == 0)
+        {
+            cout << i << endl;
+        } 
+    }
+​
+    return 0;
+}
