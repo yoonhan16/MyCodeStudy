@@ -1,0 +1,38 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2562
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    int Maximum = 0;
+    int Number;
+    int* Hold = new int[9];
+​
+    for (int i = 0; i < 9; i++)
+    {
+        cin >> Number;
+        Hold[i] = Number;
+​
+        if (Maximum < Number)
+        {
+            Maximum = Number;
+        }
+        if (Number >= 100)
+        {
+            break;
+        }
+    }
+​
+    for (int i = 0; i < 9; i++)
+    {
+        if (Hold[i] == Maximum)
+        {
+            cout << Maximum << '\n';
+            cout << i + 1 << '\n';
+        }
+    }
+​
+    return 0;
+}
