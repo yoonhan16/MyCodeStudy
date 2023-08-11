@@ -1,0 +1,66 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2480
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    int x = 0;
+    int y = 0;
+    int z = 0;
+    
+    cin >> x;
+    cin >> y;
+    cin >> z;
+    
+    if (x != y && y != z && z != x)
+    {
+        int Top = 0;
+        if (x > y)
+        {
+            if (z > x)
+            {
+                Top = z;
+            }
+            else
+            {
+                Top = x;
+            }
+        }
+        else
+        {
+            if (z > y)
+            {
+                Top = z;
+            }
+            else
+            {
+                Top = y;
+            }
+        }
+        cout  << Top * 100 << endl;
+    }
+    
+    else
+    {
+        if (x == y && x == z)
+        {
+            cout << 10000 + (x * 1000) << endl;
+        }
+        
+        else
+        {
+            if (x == y || x == z)
+            {
+                cout << 1000 + (x * 100);
+            }
+            else 
+            {
+                cout << 1000 + (y * 100);
+            }
+        }
+    }
+​
+    return 0;
+}   
