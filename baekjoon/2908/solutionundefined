@@ -1,0 +1,37 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2908
+
+#include <iostream>
+#include <string>
+​
+using namespace std;
+​
+int main()
+{
+    string i_Number1;
+    string i_Number2;
+    string Biggs;
+    
+    cin >> i_Number1
+        >> i_Number2;
+    
+    for (int i = 2; i >= 0; i--)
+    {
+        if (i_Number1[i] > i_Number2[i])
+        {
+            Biggs = i_Number1;
+            break;
+        }
+        else if (i_Number1[i] < i_Number2[i])
+        {
+            Biggs = i_Number2;
+            break;
+        }
+    }
+    
+    for (int i = Biggs.length()-1; i >= 0; i--)
+    {
+        cout << Biggs[i];
+    }
+    
+    return 0;
+}
