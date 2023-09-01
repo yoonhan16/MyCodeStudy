@@ -1,0 +1,60 @@
+// [문제 링크]: https://www.acmicpc.net/problem/15665
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#define MAX 9
+​
+using namespace std;
+​
+int n, m;
+vector<int> Given;
+int arr[MAX];
+bool visited[MAX];
+​
+void DFS(int Number, int depth)
+{
+    if (depth == m)
+    {
+        for (int i = 0; i < m; i++)
+        {
+            
+            cout << arr[i] << " ";
+        }
+        cout << "\n";
+        return;
+    }
+    
+    int flag = 0;
+    for (int i = Number; i < n; i++)
+    {
+        if (flag != Given[i])
+        {
+            
+            flag = Given[i];
+            arr[depth] = Given[i];
+            DFS(Number, depth + 1);
+            
+        }
+    }
+}
+​
+int main()
+{
+    cin >> n
+        >> m;
+    
+    for (int i = 0; i < n; i++)
+    {
+        int Num;
+        cin >> Num;
+        Given.push_back(Num);
+    }
+    
+    sort(Given.begin(), Given.end());
+    
+    DFS(0,0);
+    
+    return 0;
+}
+​
