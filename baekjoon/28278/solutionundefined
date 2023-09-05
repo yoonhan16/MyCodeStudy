@@ -1,0 +1,112 @@
+// [문제 링크]: https://www.acmicpc.net/problem/28278
+
+#include <iostream>
+#include <vector>
+#include <stack>
+​
+using namespace std;
+​
+stack<int> S;
+vector<int> result;
+​
+void Oper_1 (int num)
+{
+    S.push(num);
+}
+​
+void Oper_2 ()
+{
+    if (!S.empty())
+    {
+        int Last_Num = S.top();
+        S.pop();
+        result.push_back(Last_Num);
+    }
+    else
+    {
+        result.push_back(-1);
+    }
+}
+​
+void Oper_3 ()
+{
+    int size = S.size();
+    result.push_back(size);
+}
+​
+void Oper_4 ()
+{
+    if (S.empty())
+    {
+        result.push_back(1);
+    }
+    else
+    {
+        result.push_back(0);
+    }
+}
+​
+void Oper_5 ()
+{
+    if (!S.empty())
+    {
+        result.push_back(S.top());
+    }
+    else
+    {
+        result.push_back(-1);
+    }
+}
+​
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int N;
+    int Oper_Num;
+    cin >> N;
+    
+    for (int i = 0; i < N; i++)
+    {
+        cin >> Oper_Num;
+        switch (Oper_Num)
+        {
+            case 1:
+            {
+                int Number;
+                cin >> Number;
+                Oper_1(Number);
+                break;
+            }
+            case 2:
+            {
+                Oper_2();
+                break;
+            }
+            case 3:
+            {
+                Oper_3();
+                break;
+            }
+            case 4:
+            {
+                Oper_4();
+                break;
+            }
+            case 5:
+            {
+                Oper_5();
+                break;
+            }
+        }
+    }
+    
+    for (int i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << "\n";
+    }
+    
+    return 0;
+}
+​
