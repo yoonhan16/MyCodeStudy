@@ -1,0 +1,76 @@
+// [문제 링크]: https://www.acmicpc.net/problem/1260
+
+#include <iostream>
+#include <string.h>
+#include <queue>
+#define MAX 1001
+​
+using namespace std;
+​
+int n,m,v;
+int connect[MAX][MAX];
+bool visited[MAX];
+queue<int> Q;
+​
+void DFS(int depth)
+{
+    visited[depth] = true;
+    cout << depth << ' ';
+    
+    for (int i = 1; i <= n; i++)
+    {
+        if (connect[depth][i] == 1 && visited[i] == false)
+        {
+            DFS(i);
+        }
+    }
+}
+​
+void BFS(int width)
+{
+    Q.push(width);
+    visited[width] = true;
+    cout << width << ' ';
+    
+    while (!Q.empty())
+    {
+        width = Q.front();
+        Q.pop();
+        
+        for (int j = 1; j <= n; j++)
+        {
+            if (connect[width][j] == 1 && visited[j] == false)
+            {
+                Q.push(j);
+                visited[j] = true;
+                cout << j << ' ';
+            }
+        }
+    }
+}
+​
+int main()
+{
+    cin >> n
+        >> m
+        >> v;
+    
+    for (int i = 0; i < m; i++)
+    {
+        int x,y;
+        cin >> x
+            >> y;
+        
+        connect[x][y] = 1;
+        connect[y][x] = 1;
+    }
+    
+    memset(visited, 0, sizeof(visited));
+    DFS(v);
+    cout << "\n";
+    memset(visited, 0, sizeof(visited));
+    BFS(v);
+    
+    return 0;
+}
+​
