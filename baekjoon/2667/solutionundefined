@@ -1,0 +1,89 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2667
+
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <queue>
+#include <vector>
+#include <algorithm>
+​
+#define MAX 26
+​
+using namespace std;
+​
+int n,Count;
+int map[MAX][MAX];
+bool visited[MAX][MAX];
+​
+vector<int> result;
+queue<pair<int, int>>Q;
+​
+int x_dir[4] = {-1, 1, 0, 0};
+int y_dir[4] = {0, 0, -1, 1};
+​
+void BFS(int from_x, int from_y)
+{
+    Count = 0;
+    Count++;
+    visited[from_x][from_y] = true;
+    Q.push(make_pair(from_x, from_y));
+    
+    while(!Q.empty())
+    {
+        int x = Q.front().first;
+        int y = Q.front().second;
+        Q.pop();
+        
+        for (int i = 0; i < 4; i++)
+        {
+            int to_x = x + x_dir[i];
+            int to_y = y + y_dir[i];
+            
+            if ((0 <= to_x && to_x < n) && (0 <= to_y && to_y < n) && visited[to_x][to_y] == false && map[to_x][to_y] == 1)
+            {
+                visited[to_x][to_y] = true;
+                Q.push(make_pair(to_x, to_y));
+                Count++;
+            }
+        }
+    }
+    result.push_back(Count);
+}
+​
+int main()
+{
+    cin >> n;
+    
+    for (int i = 0; i < n; i++)
+    {
+        string apt_location;
+        cin >> apt_location;
+        
+        for (int j = 0; j < n; j++)
+        {
+            map[i][j] = apt_location[j] - '0';
+        }
+    }
+    
+    memset(visited, 0, sizeof(visited));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (visited[i][j] == false && map[i][j] == 1)
+            {
+                BFS(i,j);
+            }
+        }
+    }
+    
+    sort(result.begin(), result.end());
+    cout << result.size() << "\n";
+    for (int i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << "\n";
+    }
+    
+    return 0;
+}
+​
