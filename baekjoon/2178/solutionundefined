@@ -1,0 +1,71 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2178
+
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <queue>
+#define MAX 101
+using namespace std;
+​
+int n,m;
+int map[MAX][MAX];
+int Distance[MAX][MAX];
+bool visited[MAX][MAX];
+​
+int x_dir[4] = {-1, 1, 0, 0};
+int y_dir[4] = {0, 0, -1, 1};
+​
+queue<pair<int, int>> Q;
+​
+void BFS(int from_x, int from_y)
+{
+    visited[from_x][from_y] = true;
+    Q.push(make_pair(from_x, from_y));
+    Distance[from_x][from_y]++;
+    
+    while(!Q.empty())
+    {
+        int x = Q.front().first;
+        int y = Q.front().second;
+        Q.pop();
+        
+        for (int i = 0; i < 4; i++)
+        {
+            int to_x = x + x_dir[i];
+            int to_y = y + y_dir[i];
+            
+            if ((0 <= to_x && to_x < n) && (0 <= to_y && to_y < m) && !visited[to_x][to_y] && (map[to_x][to_y] == 1))
+            {
+                visited[to_x][to_y] = true;
+                Q.push(make_pair(to_x, to_y));
+                Distance[to_x][to_y] = Distance[x][y] + 1;
+            }
+        }
+    }
+}
+​
+int main()
+{
+    cin >> n
+        >> m;
+    
+    for (int i = 0; i < n; i++)
+    {
+        
+        string loc_movable;
+        cin >> loc_movable;
+        
+        for (int j = 0; j < m; j++)
+        {
+            map[i][j] = loc_movable[j] - '0';
+        }
+    }
+    
+    memset(visited, 0, sizeof(visited));
+    BFS(0,0);
+    
+    cout << Distance[n-1][m-1] << "\n";
+    
+    return 0;
+}
+​
