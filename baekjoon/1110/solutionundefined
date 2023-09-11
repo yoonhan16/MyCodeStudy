@@ -1,0 +1,28 @@
+// [문제 링크]: https://www.acmicpc.net/problem/1110
+
+#include <iostream>
+​
+using namespace std;
+​
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    
+    int Num;
+    int first;
+    int Count = 0;
+    cin >> Num;
+    
+    first = Num;
+    
+    do
+    {
+        Num = (Num % 10) * 10 + ((Num / 10) + (Num % 10)) % 10;
+        Count++;
+    } while (first != Num);
+    
+    cout << Count;
+    
+    return 0;
+}
+​
