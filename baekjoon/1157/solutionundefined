@@ -1,0 +1,60 @@
+// [문제 링크]: https://www.acmicpc.net/problem/1157
+
+#include <iostream>
+#include <string>
+​
+using namespace std;
+​
+int main()
+{
+    int temp[26] = {0,}; // 알파벳 개수
+    
+    string word;
+    getline(cin,word);
+    
+    int Count = 0;
+    
+    
+    for (int i = 0; i < word.length(); i++)
+    {
+        if (word[i] < 97)
+        {
+            temp[word[i] - 65]++; // 대문자
+        }
+        else
+        {
+            temp[word[i] - 97]++; // 소문자
+        }
+    }
+    
+    int Max = 0;
+    int Max_index = 0;
+​
+    for (int i = 0; i < 26; i++)
+    {
+        if (Max < temp[i])
+        {
+            Max = temp[i];
+            Max_index = i;
+        }
+    }
+​
+    for (int i = 0; i < 26; i++)
+    {
+        if (Max == temp[i])
+        {
+            Count++;
+        }
+    }
+​
+    if (Count > 1)
+    {
+        cout << '?';
+    }
+    else
+    {
+        cout << (char)(Max_index + 65);
+    }
+​
+    return 0;
+}
