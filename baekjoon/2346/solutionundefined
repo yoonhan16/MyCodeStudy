@@ -1,0 +1,47 @@
+// [문제 링크]: https://www.acmicpc.net/problem/2346
+
+#include <iostream>
+#include <deque>
+​
+using namespace std;
+​
+int main()
+{
+    int N;
+    int move_count;
+    cin >> N;
+​
+    deque<pair<int, int>> DOCK;
+​
+    for (int i = 0; i < N; i++)
+    {
+        cin >> move_count;
+        DOCK.push_back(make_pair(move_count, i+1));
+    }
+​
+    while(N--)
+    {
+        int current = DOCK.front().first;
+        cout << DOCK.front().second << " ";
+        DOCK.pop_front();
+​
+        if (current > 0)
+        {
+            for (int i = 0; i < (current-1); i++)
+            {
+                DOCK.push_back(DOCK.front());
+                DOCK.pop_front();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < (-1*current); i++)
+            {
+                DOCK.push_front(DOCK.back());
+                DOCK.pop_back();
+            }
+        }
+    }
+    return 0;
+}
+​
