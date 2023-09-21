@@ -14,3 +14,5 @@ int solution(string word, string pat)
     
     return word.find(pat) != string::npos;
 }
+
+// string::npos = 찾는 대상이 없을 때의 반환값
