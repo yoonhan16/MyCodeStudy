@@ -11,3 +11,5 @@ int solution(string word, string is_prefix)
     
     return answer;
 }
+
+// substr = 문자열의 일부를 리턴하는 함수
