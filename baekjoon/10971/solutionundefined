@@ -1,0 +1,73 @@
+// [문제 링크]: https://www.acmicpc.net/problem/10971
+
+#include <iostream>
+#include <string.h>
+#include <vector>
+#define MAX 11
+using namespace std;
+​
+int CityNum;
+int result = 987654321;
+bool visited[MAX];
+int MAP[MAX][MAX];
+​
+void DFS (int start, int line, int sum, int width)
+{
+    if (width == CityNum && start == line)
+    {
+        if (result > sum)
+        {
+            result = sum;
+            return;
+        }
+    }
+    
+    for (int i = 0; i < CityNum; i++)
+    {
+        if (MAP[line][i] == 0)
+        {
+            continue;
+        }
+        if (!visited[i] && MAP[line][i] > 0)
+        {
+            visited[i] = true;
+            sum += MAP[line][i];
+            
+            if (sum <= result)
+            {
+                DFS(start, i, sum, width + 1);
+            }
+            visited[i] = false;
+            sum -= MAP[line][i];
+        }
+    }
+}
+​
+void Run()
+{
+    for (int i = 0; i < CityNum; i++)
+    {
+        DFS(i,i,0,0);
+    }
+}
+​
+int main()
+{
+    cin >> CityNum;
+    
+    for (int i = 0; i < CityNum; i++)
+    {
+        for (int j = 0; j < CityNum; j++)
+        {
+            cin >> MAP[i][j];
+        }
+    }
+    memset(visited, 0, sizeof(visited));
+    
+    Run();
+    cout << result << "\n";
+    
+ 
+    return 0;
+}
+​
