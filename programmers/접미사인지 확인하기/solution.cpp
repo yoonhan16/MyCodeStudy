@@ -8,18 +8,10 @@ int solution(string word, string suffix)
 {
     int answer = 1;
     
-    for (int i = 0; i < suffix.size(); i++)
+    if (word.size() < suffix.size() || word.back() != suffix.back())
     {
-        if (word.size() < suffix.size() || word.back() != suffix.back())
-        {
-            answer = 0;
-            break;
-        }
-        
-        
-        
+        answer = 0;
     }
-    
     
     return answer;
 }
