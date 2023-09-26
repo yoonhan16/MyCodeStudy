@@ -17,3 +17,12 @@ vector<int> solution(vector<int> nums, int n)
     
     return answer;
 }
+
+// vector<int> solution(vector<int> num_list, int n) 
+// {
+//     vector<int> answer;
+//     for(int i = 0; i < num_list.size(); i++)
+//         if(i % n == 0)                        n번째가 될때마다 추가
+//             answer.push_back(num_list[i]);
+//     return answer;
+// }
