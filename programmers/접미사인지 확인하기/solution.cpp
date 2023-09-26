@@ -1,4 +1,4 @@
-// [문제 링크]: https://school.programmers.co.kr/learn/courses/30/lessons/181908
+// [문제 링크]: https://school.programmers.co.kr/learn/courses/30/lessons/181908#
 
 #include <string>
 #include <vector>
@@ -8,7 +8,18 @@ int solution(string word, string suffix)
 {
     int answer = 1;
     
-    if (word.size() < suffix.size() || word.back() != suffix.back())
+    if (suffix.size() <= word.size())
+    {
+        for (int i = 1; i <= suffix.size(); i++)
+        {
+            if (suffix[suffix.size()-i] != word[word.size()-i])
+            {
+                answer = 0;
+                break;
+            }
+        }
+    }
+    else
     {
         answer = 0;
     }
