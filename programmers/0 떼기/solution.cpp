@@ -21,3 +21,9 @@ string solution(string n_str)
     
     return answer;
 }
+
+// string solution(string n_str) 
+// {
+//     string answer = to_string(stoi(n_str));
+//     return answer;
+// }  숫자로 바꾸면 앞의 0은 알아서 빠지니까
