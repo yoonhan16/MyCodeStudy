@@ -24,3 +24,20 @@ vector<string> solution(string word)
     
     return answer;
 }
+
+// vector<string> solution(string myString) 
+// {
+//     vector<string> answer;
+//     int index = 0;
+//     for (int i=0;i<myString.length();i++)
+//     {
+//         if (myString[i]=='x')
+//         {
+//             if (index!=i)answer.push_back(myString.substr(index,i-index));
+//             index = i+1;
+//         }
+//     }
+//     if (index!=myString.length())answer.push_back(myString.substr(index,myString.length()-index));
+//     sort(answer.begin(),answer.end());
+//     return answer;
+// }
