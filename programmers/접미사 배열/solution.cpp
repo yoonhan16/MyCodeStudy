@@ -11,7 +11,7 @@ vector<string> solution(string my_string)
     
     for (int i = 0; i < my_string.length(); i++)
     {
-        answer.push_back(my_string.substr(i, string::npos));
+        answer.push_back(my_string.substr(i));
     }
     
     sort(answer.begin(), answer.end());
