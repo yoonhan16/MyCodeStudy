@@ -51,12 +51,12 @@ vector<string> solution(string myStr)
     
     while (ss >> str_temp)
     {
-        answer.emplace_back(str_temp);
+        answer.push_back(str_temp);
     }
     
     if (answer.empty())
     {
-        answer.emplace_back("EMPTY");
+        answer.push_back("EMPTY");
     }
 
     return answer;
