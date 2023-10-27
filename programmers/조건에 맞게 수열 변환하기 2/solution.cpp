@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-
+// 내가 하던대로 하려면 bool형 변수 하나 만들어서 while문 돌리기
 using namespace std;
 
 int solution(vector<int> arr) 
